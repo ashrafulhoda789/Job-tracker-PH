@@ -93,7 +93,7 @@ mainContainer.addEventListener('click',
             const statuss = parentNode.querySelector('.statuss').innerText;
             const summary = parentNode.querySelector('.summary').innerText;
 
-            parentNode.querySelector('.statuss').innerText = 'Interview';
+            parentNode.querySelector('.statuss').innerText = 'INTERVIEW';
             parentNode.querySelector('.statuss').style.color = 'green';
 
             const cardInfo = {
@@ -102,7 +102,7 @@ mainContainer.addEventListener('click',
                 workPlace,
                 workShift,
                 salary,
-                statuss : 'Interview',
+                statuss : 'INTERVIEW',
                 summary
             }
 
@@ -132,7 +132,7 @@ mainContainer.addEventListener('click',
             const statuss = parentNode.querySelector('.statuss').innerText;
             const summary = parentNode.querySelector('.summary').innerText;
 
-            parentNode.querySelector('.statuss').innerText = 'Rejected';
+            parentNode.querySelector('.statuss').innerText = 'REJECTED';
             parentNode.querySelector('.statuss').style.color = 'red';
 
             const cardInfo = {
@@ -141,7 +141,7 @@ mainContainer.addEventListener('click',
                 workPlace,
                 workShift,
                 salary,
-                statuss : 'Rejected',
+                statuss : 'REJECTED',
                 summary
             }
 
