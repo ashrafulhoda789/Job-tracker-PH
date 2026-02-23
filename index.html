@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Tracker</title>
+
+    <!-- Tailwind + DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .text-color{
+            color: #002C5C;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <header class="w-[70%] mx-auto py-5">
+        <h1 class="text-color font-bold text-3xl mb-5">Job Application Tracker</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-color">
+            <div class="rounded-lg shadow p-5">
+                <h1 class="text-[20px] font-medium" >Total</h1>
+                <p id="total" class="text-[18px] font-medium">0</p>
+            </div>
+            <div class="rounded-lg shadow p-5">
+                <h1 class="text-[20px] font-medium" >Interview</h1>
+                <p id="interview" class="text-[18px] font-medium">0</p>
+            </div>
+            <div class="rounded-lg shadow p-5">
+                <h1 class="text-[20px] font-medium" >Rejected</h1>
+                <p id="rejected" class="text-[18px] font-medium">0</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-[70%] mx-auto py-5">
+        <div class="flex justify-between items-center text-color mb-5">
+            <h1 class="font-semibold text-[18px]">Available Jobs</h1>
+            <p id="available-count" class="font-medium text-[16px]">8 Jobs</p>
+        </div>
+
+        <div class="flex gap-2">
+            <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="btn btn-primary">All</button>
+            <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn" class="btn">Interview</button>
+            <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn" class="btn">Rejected</button>
+        </div>
+
+        <section id="filterSection" class="hidden">
+            <div class="text-center rounded-2xl shadow p-5 shadow-gray-300 mt-10 space-y-5">
+                <div>
+                    <i class="fa-solid fa-file"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-2xl text-color">No Jobs Available</h1>
+                    <p class="font-medium text-neutral-500">Check back soon for new job opportunities</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="all-cards" class="space-y-5 my-10">
+            <div class="job-card rounded-2xl shadow p-5 shadow-gray-300 flex flex-col md:flex-row justify-between">
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <h1 class="titleName text-2xl text-color font-bold">Mobile First Corp</h1>
+                        <h3 class="regignation text-[20px] text-neutral-500">React Native Developer</h3>
+                    </div>
+
+                    <ul class="description flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-10 list-disc text-neutral-500">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000 - $175,000</li>
+                        
+                    </ul>
+
+                    <div>
+                        <p class="statuss">Not Applied</p>
+                        <p class="summary">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-accent btn-outline interview-btn text-[16px] text-bold">Interview</button>
+                        <button class="btn btn-secondary btn-outline rejected-btn text-[16px] text-bold">Rejected</button>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn w-[50px] h-[50px] rounded-full delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="job-card rounded-2xl shadow p-5 shadow-gray-300 flex flex-col md:flex-row justify-between">
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <h1 class="titleName text-2xl text-color font-bold">Mobile First Corp</h1>
+                        <h3 class="regignation text-[20px] text-neutral-500">React Native Developer</h3>
+                    </div>
+
+                    <ul class="description flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-10 list-disc text-neutral-500">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000 - $175,000</li>
+                        
+                    </ul>
+
+                    <div>
+                        <p class="statuss">Not Applied</p>
+                        <p class="summary">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-accent btn-outline interview-btn text-[16px] text-bold">Interview</button>
+                        <button class="btn btn-secondary btn-outline rejected-btn text-[16px] text-bold">Rejected</button>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn w-[50px] h-[50px] rounded-full delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
