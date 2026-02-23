@@ -30,6 +30,7 @@ function toggleStyle(id){
     rejectedFilterBtn.classList.remove('btn-primary');
 
     const selected = document.getElementById(id);
+    currentStatus = id;
     selected.classList.add('btn-primary');
 
     // For showing No jobs Available
@@ -61,24 +62,26 @@ calculateCount();
 //4. Button clickable
 mainContainer.addEventListener('click',
     function(event){
-        
-        if(event.target.classList.contains('interview-btn')){
+        console.log(event);
+        if(event.target.closest('.interview-btn')){
             console.log("object");
-            const parentNode = event.target.parentNode.parentNode;
+            const parentNode = event.target.closest('.job-card');
             const companyName = parentNode.querySelector('.titleName').innerText;
             const regignation = parentNode.querySelector('.regignation').innerText;
-            const workStyle = parentNode.querySelector('.work-style').innerText;
+            const workPlace = parentNode.querySelector('.workPlace').innerText;
             const workShift = parentNode.querySelector('.work-shift').innerText;
             const salary = parentNode.querySelector('.salary').innerText;
             const statuss = parentNode.querySelector('.statuss').innerText;
             const summary = parentNode.querySelector('.summary').innerText;
+
+            // console.log( regignation ,workStyle, workShift, salary);
 
             parentNode.querySelector('.statuss').innerText = 'Interview';
 
             const cardInfo = {
                 companyName,
                 regignation,
-                workStyle,
+                workPlace,
                 workShift,
                 salary,
                 statuss : 'Interview',
@@ -100,11 +103,11 @@ mainContainer.addEventListener('click',
             calculateCount();
 
         }
-        else if(event.target.classList.contains('rejected-btn')){
-            const parentNode = event.target.parentNode.parentNode;
+        else if(event.target.closest('.rejected-btn')){
+            const parentNode = event.target.closest('.job-card');
             const companyName = parentNode.querySelector('.titleName').innerText;
             const regignation = parentNode.querySelector('.regignation').innerText;
-            const workStyle = parentNode.querySelector('.work-style').innerText;
+            const workPlace = parentNode.querySelector('.workPlace').innerText;
             const workShift = parentNode.querySelector('.work-shift').innerText;
             const salary = parentNode.querySelector('.salary').innerText;
             const statuss = parentNode.querySelector('.statuss').innerText;
@@ -115,7 +118,7 @@ mainContainer.addEventListener('click',
             const cardInfo = {
                 companyName,
                 regignation,
-                workStyle,
+                workPlace,
                 workShift,
                 salary,
                 statuss : 'Rejected',
@@ -136,9 +139,7 @@ mainContainer.addEventListener('click',
 
             calculateCount();
         }
-        else if(event.target.classList.contains('delete-btn')){
-
-        }
+        
     }
 )
 
@@ -173,12 +174,12 @@ function renderInterview(){
                     <h3 class="regignation text-[20px] text-neutral-500">${interview.regignation}</h3>
                 </div>
 
-                <ul class="description flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-10 list-disc text-neutral-500">
-                    <p>${interview.workStyle}</p>
-                    <li>${interview.workShift}</li>
-                    <li>${interview.salary}</li>
+                <div class=" flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-10 list-disc text-neutral-500">
+                    <p class="workPlace">${interview.workPlace}</p>
+                    <li class="work-shift">${interview.workShift}</li>
+                    <li class="salary">${interview.salary}</li>
                     
-                </ul>
+                </div>
 
                 <div>
                     <p class="statuss">${interview.statuss}</p>
@@ -229,15 +230,15 @@ function renderRejected(){
             <div class="space-y-5">
                 <div class="space-y-2">
                     <h1 class="titleName text-2xl text-color font-bold"> ${rejected.companyName}</h1>
-                    <h3 class="regignation text-[20px] text-neutral-500">React Native Developer</h3>
+                    <h3 class="regignation text-[20px] text-neutral-500">${rejected.regignation}</h3>
                 </div>
 
-                <ul class="description flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-10 list-disc text-neutral-500">
-                    <p>${rejected.workStyle}</p>
-                    <li>${rejected.workShift}</li>
-                    <li>${rejected.salary}</li>
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-10 list-disc text-neutral-500">
+                    <p class="workPlace">${rejected.workPlace}</p>
+                    <li class="work-shift">${rejected.workShift}</li>
+                    <li class="salary">${rejected.salary}</li>
                     
-                </ul>
+                </div>
 
                 <div>
                     <p class="statuss">${rejected.statuss}</p>
