@@ -3,6 +3,7 @@
   getElementById():
   - It's select one element by its id
   - return a single DOM element or null
+
   getElementsByCLassName():
   - It's select all elements with a specific class name
   - return an HTMLCollection
