@@ -21,24 +21,29 @@
 </head>
 <body>
     
-    <header class="w-[70%] mx-auto py-5">
-        <h1 class="text-color font-bold text-3xl mb-5">Job Application Tracker</h1>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-color">
-            <div class="rounded-lg shadow p-5">
-                <h1 class="text-[20px] font-medium" >Total</h1>
-                <p id="total" class="text-[18px] font-medium">0</p>
+    <header class="shadow">
+        <div class="w-[70%] mx-auto py-5 ">
+            <h1 class="text-color font-bold text-3xl mb-5">Job Application Tracker</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-color">
+                <div class="rounded-lg shadow shadow-gray-400 p-5">
+                    <h1 class="text-[20px] font-medium" >Total</h1>
+                    <p id="total" class="text-[18px] font-medium">0</p>
+                </div>
+                <div class="rounded-lg shadow shadow-gray-400 p-5">
+                    <h1 class="text-[20px] font-medium" >Interview</h1>
+                    <p id="interview" class="text-[18px] text-green-500 font-medium">0</p>
+                </div>
+                <div class="rounded-lg shadow shadow-gray-400 p-5">
+                    <h1 class="text-[20px] font-medium" >Rejected</h1>
+                    <p id="rejected" class="text-[18px] text-red-500 font-medium">0</p>
+                </div>
             </div>
-            <div class="rounded-lg shadow p-5">
-                <h1 class="text-[20px] font-medium" >Interview</h1>
-                <p id="interview" class="text-[18px] font-medium">0</p>
-            </div>
-            <div class="rounded-lg shadow p-5">
-                <h1 class="text-[20px] font-medium" >Rejected</h1>
-                <p id="rejected" class="text-[18px] font-medium">0</p>
-            </div>
+
         </div>
+
     </header>
 
+    
     <main class="w-[70%] mx-auto py-5">
         <div class="flex justify-between items-center text-color mb-5">
             <h1 class="font-semibold text-[18px]">Available Jobs</h1>
@@ -51,7 +56,7 @@
             <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn" class="btn">Rejected</button>
         </div>
 
-        <section id="filterSection" class="my-10 hidden">
+        <section id="filterSection" class="my-10 space-y-5 hidden">
             <div class="text-center rounded-2xl shadow p-5 shadow-gray-300 mt-10 space-y-5">
                 <div>
                     <i class="fa-solid fa-file"></i>
@@ -93,6 +98,7 @@
                     <button class="btn w-[50px] h-[50px] rounded-full btn-delete"><i class="fa-solid fa-trash"></i></button>
                 </div>
             </div>
+
             <div class="job-card rounded-2xl shadow p-5 shadow-gray-300 flex flex-col md:flex-row justify-between">
                 <div class="space-y-5">
                     <div class="space-y-2">

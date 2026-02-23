@@ -161,7 +161,7 @@ mainContainer.addEventListener('click',
             availableCnt();
         }
 
-        else if(event.target.classList.contains('btn-delete')){
+        else if(event.target.closest('.btn-delete')){
             
             const card = event.target.closest('.job-card');
             const companyName = card.querySelector('.titleName').innerText;
@@ -169,7 +169,6 @@ mainContainer.addEventListener('click',
             card.remove();
 
             interviewList = interviewList.filter(job => job.companyName != companyName);
-
             rejectedList = rejectedList.filter(job => job.companyName != companyName);
 
             calculateCount();
@@ -210,7 +209,7 @@ function renderInterview(){
 
     for(let interview of interviewList){
         let div = document.createElement('div');
-        div.className = 'job-card rounded-2xl shadow p-5 shadow-gray-300 flex flex-col md:flex-row justify-between';
+        div.className = 'job-card rounded-2xl shadow p-5 shadow-gray-300 flex flex-col md:flex-row gap-2.5 justify-between';
         div.innerHTML = `
             <div class="space-y-5">
                 <div class="space-y-2">
@@ -269,7 +268,7 @@ function renderRejected(){
 
     for(let rejected of rejectedList){
         let div = document.createElement('div');
-        div.className = 'job-card rounded-2xl shadow p-5 shadow-gray-300 flex flex-col md:flex-row justify-between';
+        div.className = 'job-card rounded-2xl shadow p-5 shadow-gray-300 flex flex-col md:flex-row gap-2.5 justify-between ';
         div.innerHTML = `
             <div class="space-y-5">
                 <div class="space-y-2">
