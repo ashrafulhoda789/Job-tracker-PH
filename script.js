@@ -158,12 +158,13 @@ mainContainer.addEventListener('click',
             calculateCount();
             availableCnt();
         }
-        else if(event.target.closest('.btn-delete')){
+
+        else if(event.target.classList.contains('btn-delete')){
             
             const card = event.target.closest('.job-card');
-            card.remove();
-
             const companyName = card.querySelector('.titleName').innerText;
+
+            card.remove();
 
             interviewList = interviewList.filter(job => job.companyName != companyName);
 
@@ -234,7 +235,7 @@ function renderInterview(){
             </div>
 
             <div>
-                <button class="btn w-[50px] h-[50px] rounded-full btn-delete">Delete</i></button>
+                <button class="btn w-[50px] h-[50px] rounded-full btn-delete"><i class="fa-solid fa-trash"></i></button>
             </div>
         `;
 
@@ -293,7 +294,7 @@ function renderRejected(){
             </div>
 
             <div>
-                <button class="btn w-[50px] h-[50px] rounded-full btn-delete">Delete</button>
+                <button class="btn w-[50px] h-[50px] rounded-full btn-delete"><i class="fa-solid fa-trash"></i></button>
             </div>
         `;
 
