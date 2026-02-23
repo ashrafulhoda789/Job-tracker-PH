@@ -19,7 +19,8 @@ const filterSection = document.getElementById('filterSection');
 // 4. 
 const mainContainer = document.querySelector('main');
 
-// console.log(mainContainer);
+// 5.
+const availableCount = document.getElementById('available-count');
 
 
 
@@ -31,12 +32,14 @@ function toggleStyle(id){
 
     const selected = document.getElementById(id);
     currentStatus = id;
+
     selected.classList.add('btn-primary');
 
     // For showing No jobs Available
     if(id == 'all-filter-btn'){
         filterSection.classList.add('hidden');
         allCardSection.classList.remove('hidden');
+        availableCnt();
     }
     else if(id == 'interview-filter-btn'){
         filterSection.classList.remove('hidden');
@@ -48,10 +51,14 @@ function toggleStyle(id){
         allCardSection.classList.add('hidden');
         renderRejected();
     }
+
+    availableCnt();
 }
 
 // calculate the count of Jobs
 function calculateCount(){
+    availableCount.innerText = allCardSection.children.length + " Jobs";
+
     total.innerText = allCardSection.children.length;
     interviewCount.innerText = interviewList.length;
     rejectedCount.innerText = rejectedList.length;
@@ -59,12 +66,24 @@ function calculateCount(){
 
 calculateCount();
 
+function availableCnt(){
+    const totalValue = allCardSection.children.length;
+    if(currentStatus == 'all-filter-btn'){
+        availableCount.innerText = totalValue + " Jobs";
+    }
+    else if(currentStatus == 'interview-filter-btn'){
+        availableCount.innerText = interviewList.length + " of " + totalValue + " Jobs";
+    }
+    else if(currentStatus == 'rejected-filter-btn'){
+        availableCount.innerText = rejectedList.length + " of " + totalValue + " Jobs";
+    }
+}
+
 //4. Button clickable
 mainContainer.addEventListener('click',
     function(event){
-        console.log(event);
+        
         if(event.target.closest('.interview-btn')){
-            console.log("object");
             const parentNode = event.target.closest('.job-card');
             const companyName = parentNode.querySelector('.titleName').innerText;
             const regignation = parentNode.querySelector('.regignation').innerText;
@@ -73,8 +92,6 @@ mainContainer.addEventListener('click',
             const salary = parentNode.querySelector('.salary').innerText;
             const statuss = parentNode.querySelector('.statuss').innerText;
             const summary = parentNode.querySelector('.summary').innerText;
-
-            // console.log( regignation ,workStyle, workShift, salary);
 
             parentNode.querySelector('.statuss').innerText = 'Interview';
 
@@ -101,6 +118,7 @@ mainContainer.addEventListener('click',
             }
 
             calculateCount();
+            availableCnt();
 
         }
         else if(event.target.closest('.rejected-btn')){
@@ -138,6 +156,29 @@ mainContainer.addEventListener('click',
             }
 
             calculateCount();
+            availableCnt();
+        }
+        else if(event.target.closest('.btn-delete')){
+            
+            const card = event.target.closest('.job-card');
+            card.remove();
+
+            const companyName = card.querySelector('.titleName').innerText;
+
+            interviewList = interviewList.filter(job => job.companyName != companyName);
+
+            rejectedList = rejectedList.filter(job => job.companyName != companyName);
+
+            calculateCount();
+            availableCnt();
+
+            if(currentStatus == 'interview-filter-btn'){
+                renderInterview();
+            }
+            else if(currentStatus == 'rejected-filter-btn'){
+                renderRejected();
+            }
+            
         }
         
     }
@@ -193,7 +234,7 @@ function renderInterview(){
             </div>
 
             <div>
-                <button class="btn w-[50px] h-[50px] rounded-full delete-btn"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn w-[50px] h-[50px] rounded-full btn-delete">Delete</i></button>
             </div>
         `;
 
@@ -252,7 +293,7 @@ function renderRejected(){
             </div>
 
             <div>
-                <button class="btn w-[50px] h-[50px] rounded-full delete-btn"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn w-[50px] h-[50px] rounded-full btn-delete">Delete</button>
             </div>
         `;
 
