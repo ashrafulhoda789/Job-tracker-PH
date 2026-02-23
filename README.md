@@ -38,13 +38,13 @@
     - This continues unless you stop it manually.
 # Question-4:
   ## Event Delegation:
-    - Event Delegation is a technique where attach a single event listener to a parent element instead of adding separate listeners to each child.
+  - Event Delegation is a technique where attach a single event listener to parent element instead of adding separate listeners to each child.
 
     ## It's useful because:
-      - Efficient
-      - Dynamic elements
-      - CLeaner code
-      - Memory-friendly
+    - Efficient
+    - Dynamic elements
+    - CLeaner code
+    - Memory-friendly
     
 # Question-5:
  PreventDefault():
