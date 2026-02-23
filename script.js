@@ -94,6 +94,7 @@ mainContainer.addEventListener('click',
             const summary = parentNode.querySelector('.summary').innerText;
 
             parentNode.querySelector('.statuss').innerText = 'Interview';
+            parentNode.querySelector('.statuss').style.color = 'green';
 
             const cardInfo = {
                 companyName,
@@ -132,6 +133,7 @@ mainContainer.addEventListener('click',
             const summary = parentNode.querySelector('.summary').innerText;
 
             parentNode.querySelector('.statuss').innerText = 'Rejected';
+            parentNode.querySelector('.statuss').style.color = 'red';
 
             const cardInfo = {
                 companyName,
@@ -223,8 +225,8 @@ function renderInterview(){
                     
                 </div>
 
-                <div>
-                    <p class="statuss">${interview.statuss}</p>
+                <div class="space-y-3">
+                    <p class="statuss text-green-700 font-medium shadow w-[150px] text-center p-2 bg-[#EEF4FF] rounded-lg">${interview.statuss}</p>
                     <p class="summary">${interview.summary}</p>
                 </div>
 
@@ -282,8 +284,8 @@ function renderRejected(){
                     
                 </div>
 
-                <div>
-                    <p class="statuss">${rejected.statuss}</p>
+                <div class="space-y-3">
+                    <p class="statuss text-red-500 font-medium shadow w-[150px] text-center p-2 bg-[#EEF4FF] rounded-lg">${rejected.statuss}</p>
                     <p class="summary">${rejected.summary}</p>
                 </div>
 
